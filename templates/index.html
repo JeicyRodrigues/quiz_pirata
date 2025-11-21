@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Que Pirata Você É?</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header-flag">
+            <h1>⚓ Código Pirata ⚓</h1>
+            <p>Descubra quem você seria na Era de Ouro da Pirataria</p>
+        </div>
+
+        <form action="/resultado" method="POST" id="quizForm">
+            
+            <div class="gender-selection">
+                <h3>Primeiro, quem és tu nos mares?</h3>
+                <label>
+                    <input type="radio" name="genero" value="homem" required> Homem do Mar
+                </label>
+                <label>
+                    <input type="radio" name="genero" value="mulher"> Mulher do Mar
+                </label>
+            </div>
+
+            <hr style="border-color: #333; margin: 30px 0;">
+
+            {% for p in perguntas %}
+            <div class="question-block">
+                <h3>{{ p.id }}. {{ p.texto }}</h3>
+                {% for opcao in p.opcoes %}
+                <label>
+                    <input type="radio" name="q{{ p.id }}" value="{{ opcao[0] }}" required>
+                    {{ opcao[1] }}
+                </label>
+                {% endfor %}
+            </div>
+            {% endfor %}
+
+            <button type="submit">Içar Velas e Ver Resultado!</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

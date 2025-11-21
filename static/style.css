@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --bg-color: #0a0a0a;
+    --card-bg: #1a1a1a;
+    --text-main: #e0e0e0;
+    --accent-red: #8b0000;
+    --accent-gold: #d4af37;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle, #1c1c1c 1px, transparent 1px);
+    background-size: 20px 20px; /* Efeito sutil de pontilhado */
+    color: var(--text-main);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    width: 90%;
+    margin: 40px auto;
+    background: var(--card-bg);
+    padding: 40px;
+    border: 2px solid var(--accent-gold);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+    position: relative;
+}
+
+/* Detalhe da "Bandeira" no topo */
+.header-flag {
+    text-align: center;
+    border-bottom: 3px solid var(--accent-red);
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+h1, h2 {
+    font-family: 'Pirata One', cursive;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h1 { font-size: 3rem; margin: 0; }
+h3 { color: var(--accent-red); }
+
+/* Formulário e Perguntas */
+.question-block {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-left: 4px solid var(--accent-red);
+    background: rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s;
+}
+
+.question-block:hover {
+    transform: translateX(5px);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.gender-selection {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px dashed var(--accent-gold);
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+input[type="radio"] {
+    accent-color: var(--accent-red);
+    transform: scale(1.2);
+    margin-right: 10px;
+}
+
+/* Botão */
+button {
+    background-color: var(--accent-red);
+    color: white;
+    font-family: 'Pirata One', cursive;
+    font-size: 1.5rem;
+    padding: 15px 40px;
+    border: 2px solid var(--accent-gold);
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: var(--accent-gold);
+    color: var(--bg-color);
+    border-color: var(--accent-red);
+}
+
+/* Página de Resultado */
+.result-card {
+    text-align: center;
+    animation: fadeIn 2s;
+}
+
+.pirate-img {
+    max-width: 300px;
+    border: 5px solid var(--accent-gold);
+    box-shadow: 0 0 15px var(--accent-red);
+    margin: 20px 0;
+    filter: sepia(30%); /* Dá um tom envelhecido */
+}
+
+.pirate-desc {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
