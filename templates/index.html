@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Pirata</title>
+    <!-- Importante: Carrega o CSS e o Script JS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body class="quiz-bg">
+    
+    <div class="quiz-container side-left fade-in">
+        
+        <div class="header-flag">
+             <h1>⚓ Código Pirata ⚓</h1>
+        </div>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div style="color: #e50914; text-align: center;">{{ messages[0] }}</div>
+          {% endif %}
+        {% endwith %}
+
+        {# --- TELA 1: ESCOLHA DE GÊNERO --- #}
+        {% if etapa == 'inicio' %}
+        <form action="/iniciar" method="POST">
+            <h3>Quem és tu nos mares?</h3>
+            <div class="gender-options">
+                <label class="option-btn">
+                    <input type="radio" name="genero" value="homem" required> 
+                    <span class="option-text">Homem do Mar</span>
+                </label>
+                <label class="option-btn">
+                    <input type="radio" name="genero" value="mulher" required> 
+                    <span class="option-text">Mulher do Mar</span>
+                </label>
+            </div>
+            <button type="submit" class="main-btn">Iniciar Jornada</button>
+        </form>
+
+        {# --- TELA 2: PERGUNTAS --- #}
+        {% elif etapa == 'quiz' %}
+        <p class="progress-text">{{ progresso }}</p>
+        
+        <form action="/responder" method="POST" id="quizForm">
+            <h2 class="question-title">{{ pergunta.texto }}</h2>
+            
+            <div class="options-list">
+                {% for opcao in pergunta.opcoes %}
+                <!-- A classe option-radio e o JavaScript farão o envio automático -->
+                <label class="option-radio">
+                    <!-- O name="resposta" é o que o script.js procura para ativar o envio automático -->
+                    <input type="radio" name="resposta" value="{{ opcao[0] }}" required>
+                    <span class="option-text">{{ opcao[1] }}</span>
+                </label>
+                {% endfor %}
+            </div>
+            
+            <!-- BOTÃO REMOVIDO: A navegação agora é automática via script.js -->
+        </form>
+        {% endif %}
+        
+    </div>
+</body>
+</html>

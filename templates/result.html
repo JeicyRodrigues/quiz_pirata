@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado Pirata</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="result-bg">
+    
+    <div class="result-container center-box fade-in-slow">
+        <div class="header-flag">
+            <h3>Sua alma pirata pertence a...</h3>
+        </div>
+        
+        <div class="result-content">
+            <h1>{{ resultado.nome }}</h1>
+            
+            <img src="{{ resultado.img }}" alt="{{ resultado.nome }}" class="pirate-portrait">
+
+            <div class="description-box">
+                <p>"{{ resultado.desc }}"</p>
+            </div>
+
+            <a href="/">
+                <button class="main-btn">Refazer o Teste</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* --- VARIÁVEIS DE ESTILO (TEMA MODERNO) --- */
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    
+    --accent-color: #e50914;
+    --hover-color: #f40612;
+    
+    --border-radius-lg: 24px;
+    --border-radius-sm: 12px;
+    
+    --transition-speed: 0.2s;
+}
+
+/* --- ESTILOS GERAIS --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    /* Ajuste para funcionar mesmo sem as imagens carregadas inicialmente */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/wallpaper.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body.result-bg {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/resultado.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* --- CONTAINERS --- */
+.quiz-container, .result-container {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- TIPOGRAFIA --- */
+h1, h2, h3 {
+    font-weight: 600;
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2.question-title {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.progress-text {
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+/* --- BOTÕES E INPUTS --- */
+.main-btn {
+    width: 100%;
+    padding: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease, transform 0.1s ease;
+}
+
+.main-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.main-btn:active {
+    transform: scale(0.98);
+}
+
+/* --- OPÇÕES DE RÁDIO --- */
+input[type="radio"] {
+    display: none;
+}
+
+.option-btn, .option-radio {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    margin-bottom: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    font-weight: 400;
+}
+
+.option-btn:hover, .option-radio:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px); /* Pequeno movimento ao passar o mouse */
+}
+
+/* ESTADO SELECIONADO */
+.option-btn:has(input:checked), .option-radio:has(input:checked) {
+    background-color: rgba(229, 9, 20, 0.1);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+input[type="radio"]:checked + span {
+    font-weight: 600;
+}
+
+.option-text {
+    flex-grow: 1;
+}
+
+/* --- LAYOUT ESPECÍFICO --- */
+.side-left {
+    width: 90%;
+    max-width: 480px;
+    margin-right: auto;
+    margin-left: 5%;
+}
+
+.center-box {
+    width: 90%;
+    max-width: 550px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* --- RESULTADO --- */
+.pirate-portrait {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--accent-color);
+    margin: 25px auto;
+    display: block;
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.3);
+}
+
+.description-box {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 35px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: var(--border-radius-sm);
+}
+
+/* --- ANIMAÇÕES --- */
+.fade-in {
+    animation: fadeIn var(--transition-speed) ease-out;
+}
+
+.fade-in-slow {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        padding: 20px 0;
+    }
+    .side-left {
+        margin: 20px auto;
+        width: 95%;
+    }
+    .quiz-container, .result-container {
+        padding: 30px 20px;
+    }
+    h1 { font-size: 1.8rem; }
+    h2.question-title { font-size: 1.3rem; }
+}
